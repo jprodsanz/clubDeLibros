@@ -1,13 +1,13 @@
-package com.pablo.clubdelibros;
+package com.pablo.crudclub;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ClubDeLibrosApplication {
+public class CrudClubApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ClubDeLibrosApplication.class, args);
+        SpringApplication.run(CrudClubApplication.class, args);
     }
 
 }

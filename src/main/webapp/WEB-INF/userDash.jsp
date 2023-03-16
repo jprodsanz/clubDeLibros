@@ -17,33 +17,33 @@
 <body>
 <div class="container">
   <h1 class="text-center"> Dashboard</h1>
+  <h3 class="text-center">Hey! <c:out value="${user.username}" /></h3>
   <p>
     <a href="/logout" class="btn btn-outline-primary">Logout</a>
+  </p>
+  <p>
+    <a href="/book/new" class="btn btn-outline-primary">Add Book </a>
   </p>
   <table class="table table-striped table-bordered text-center">
     <thead class="table-dark">
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Username</th>
-      <th scope="col">Email </th>
-      <th scope="col">Actions</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author Name </th>
+      <th scope="col">Posted By</th>
+
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="user" items="${allUsers}">
+<%--    var should be singular and items plurarl --%>
+    <c:forEach var="book" items="${books}">
       <tr>
-        <td><c:out value="${user.id}"/></td>
-        <td><c:out value="${user.username}"/></td>
-        <td><c:out value="${user.email}"/></td>
+        <td>${book.id}</td>
         <td>
-          <a href="/user/${user.id}/delete" class="btn btn-danger">Delete</a>
-<%--          <a href="/user/${user.id}" class="btn btn-primary">View</a>--%>
-          <a href="/user/${user.id}/edit" class="btn btn-primary">Edit</a>
-        </td>
+          <a href="/books/${book.id}/view">${book.title}</a></td>
+        <td>${book.author}</td>
+        <td>${book.submittedBy.username}</td>
       </tr>
-
-
-
     </c:forEach>
 
     </tbody>

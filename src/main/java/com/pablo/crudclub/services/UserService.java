@@ -1,13 +1,12 @@
-package com.pablo.clubdelibros.services;
+package com.pablo.crudclub.services;
 
-import com.pablo.clubdelibros.models.LoginUser;
-import com.pablo.clubdelibros.models.User;
-import com.pablo.clubdelibros.repositories.UserRepository;
+import com.pablo.crudclub.models.LoginUser;
+import com.pablo.crudclub.models.User;
+import com.pablo.crudclub.repositories.UserRepository;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.pablo.clubdelibros.models;
+package com.pablo.crudclub.models;
 
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -8,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -38,7 +39,13 @@ public class User {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
 
+    // cascade is a chain reaction, if we delete a user
+    // it will find every entry associated with the user and delete it
+    @OneToMany(mappedBy="submittedBy", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Book> booksSubmitted;
+
     public User () {}
+
     public User (String username) {this.username = username;}
 
     public Long getId() {
@@ -105,5 +112,11 @@ public class User {
         this.updatedAt = new Date();
     }
 
+    public List<Book> getBooksSubmitted() {
+        return booksSubmitted;
+    }
 
+    public void setBooksSubmitted(List<Book> booksSubmitted) {
+        this.booksSubmitted = booksSubmitted;
+    }
 }

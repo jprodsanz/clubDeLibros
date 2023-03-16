@@ -1,4 +1,4 @@
-package com.pablo.clubdelibros.models;
+package com.pablo.crudclub.models;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;

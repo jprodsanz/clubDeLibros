@@ -1,10 +1,10 @@
-package com.pablo.clubdelibros;
+package com.pablo.crudclub;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ClubDeLibrosApplicationTests {
+class CrudClubApplicationTests {
 
     @Test
     void contextLoads() {

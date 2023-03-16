@@ -9,11 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.pablo</groupId>
-    <artifactId>ClubDeLibros</artifactId>
+    <artifactId>CrudClub</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>ClubDeLibros</name>
-    <description>ClubDeLibros</description>
+    <name>CrudClub</name>
+    <description>CrudClub</description>
     <properties>
         <java.version>17</java.version>
     </properties>

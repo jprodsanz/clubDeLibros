@@ -1,8 +1,8 @@
-package com.pablo.clubdelibros.controllers;
+package com.pablo.crudclub.controllers;
 
-import com.pablo.clubdelibros.models.LoginUser;
-import com.pablo.clubdelibros.models.User;
-import com.pablo.clubdelibros.services.UserService;
+import com.pablo.crudclub.models.LoginUser;
+import com.pablo.crudclub.models.User;
+import com.pablo.crudclub.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -78,21 +78,31 @@ public class MainController {
         userServ.update(user);
         return "redirect:/dashboard";
     }
-    // DASHBOARD
-    @GetMapping("/dashboard")
-    public String dashboard(Model model, HttpSession session) {
-        Long id = (Long) session.getAttribute("userId");
-        if (id==null) {
-            return "redirect:/";
-        }
-        else {
-            List<User> allUsers = userServ.getAll();
-            User loggedUser = userServ.findById(id);
-            model.addAttribute("user", loggedUser);
-            model.addAttribute("allUsers", allUsers);
-            return "userDash.jsp";
-        }
-    }
+////     DASHBOARD
+//    @GetMapping("/dashboard")
+//    public String dashboard(Model model, HttpSession session) {
+//        Long id = (Long) session.getAttribute("userId");
+//        if (id==null) {
+//            return "redirect:/";
+//        }
+//        else {
+//            List<User> allUsers = userServ.getAll();
+//            User loggedUser = userServ.findById(id);
+//            model.addAttribute("user", loggedUser);
+//            model.addAttribute("allUsers", allUsers);
+//            return "userDash.jsp";
+//        }
+//    }
+//    @GetMapping("/dashboard")
+//    public String dashboard(Model model, HttpSession session) {
+//        if (session.getAttribute("userId") == null) {
+//            return "redirect:/";
+//        }
+//        Long id = (Long) session.getAttribute("userId");
+//        User loggedUser = userServ.findById(id);
+//        model.addAttribute("user", loggedUser);
+//            return "userDash.jsp";
+//        }
     // LOGOUT
     @GetMapping("/logout")
     public String logout(HttpSession session) {

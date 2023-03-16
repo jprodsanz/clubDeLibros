@@ -1,6 +1,6 @@
-package com.pablo.clubdelibros.repositories;
+package com.pablo.crudclub.repositories;
 
-import com.pablo.clubdelibros.models.User;
+import com.pablo.crudclub.models.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
