@@ -14,31 +14,38 @@
   <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
-<div class="card">
-  <div class="card-header title">
-      Active User: <c:out value="${user.username}" />
-  </div>
-    <div class="card-body">
-      <h5 class="card-title">
-        <c:if test="${user.id == oneBook.submittedBy.id}">
-          <td>
-            <h2> Hi, ${user.username} you read ${oneBook.title} by ${oneBook.author}</h2>
-          </td>
-        </c:if>
-      </h5>
-      <p class="card-text">
-      <h3> Below is  your review: </h3>
-      <p>
-        ${oneBook.myThoughts}
-      </p>
-      <p>
-        <a href="/book/${oneBook.id}/delete" class="btn btn-outline-danger">Delete</a>
-      </p>
-      <p>
-        <a href="/book/${oneBook.id}/update" class="btn btn-outline-primary">Update</a>
-      </p>
 
+<div class="content">
+
+<%--  if match = true --%>
+  <c:if test="${user.id == oneBook.submittedBy.id}">
+    <td>
+      <h3> You read ${oneBook.title} by ${oneBook.author}</h3>
+      <h4 >Here's your thoughts:</h4>
+    </td>
+  </c:if>
+
+  <!-- NOT a match -->
+  <c:if test="${user.id != oneBook.submittedBy.id}">
+    <td>
+      <h3> ${oneBook.submittedBy.username} read  ${oneBook.title} by ${oneBook.author}</h3>
+      <h4 >Here's ${oneBook.submittedBy.username} thoughts:</h4>
+    </td>
+  </c:if>
+
+  <hr/>
+  <p> ${oneBook.myThoughts}</p>
+  <hr/>
+
+  <!-- user and submittedBy match -->
+  <c:if test="${user.id == oneBook.submittedBy.id}">
+    <div class="flexControl">
+      <h3><a href="/books/${oneBook.id}/update" class="btn btn-outline-primary">Update</a></h3>
+      <h3><a href="/books/${oneBook.id}/delete" class="btn btn-outline-danger">Delete</a></h3>
     </div>
+  </c:if>
+</div>
+
   <div class="card-footer text-muted">
     <small class="text-muted ">
       Back to dashbaord

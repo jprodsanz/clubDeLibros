@@ -22,11 +22,11 @@
 </div>
 
 <div class="container">
-    <form:form action="/book/${book_id}/update" method="POST" modelAttribute="book">
+    <form:form action="/books/${updateBook.id}/update" method="POST" modelAttribute="updateBook">
         <input type="hidden" name="_method" value="PUT"/>
 
-            <form:input type="hidden" path="submittedBy" value="${book.submittedBy.id}" class="form"/>
-            <form:input type="hidden" path="id" value="${book.id}" class="form"/>
+            <form:input type="hidden" path="submittedBy" value="${updateBook.submittedBy.id}" class="form"/>
+            <form:input type="hidden" path="id" value="${updateBook.id}" class="form"/>
 
         <div class="mb-3">
             <form:label for="title" class="form-label" path="title">Title:</form:label>

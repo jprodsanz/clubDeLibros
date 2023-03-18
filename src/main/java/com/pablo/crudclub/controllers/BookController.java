@@ -72,44 +72,45 @@ public class BookController {
     }
 
     // FINDS ONE BOOK
-    @GetMapping("/book/{book_id}/update")
+    @GetMapping("/books/{book_id}/update")
     public String editBook(@PathVariable("book_id") Long book_id, Model model, HttpSession session) {
         Long id = (Long) session.getAttribute("userId");
         Book oneBook = bookServ.findOneById(book_id);
+
         if (id != oneBook.getSubmittedBy().getId()) {
             session.setAttribute("userId", null);
             return "redirect:/";
         }
         User loggedUser = userServ.findById(id);
         model.addAttribute("user", loggedUser);
-        model.addAttribute("book", bookServ.findOneById(id));
+        model.addAttribute("updateBook", oneBook);
         return "editBook.jsp";
     }
 
     /// UPDATES BOOK
-    @PutMapping("/book/{book_id}/update")
+    @PutMapping("/books/{book_id}/update")
     // this has to come in this order valid, modelAtt etc...
     public String updateBook(
             @Valid @ModelAttribute
-                    ("book") Book book, BindingResult result, @PathVariable("book_id") Long book_id, HttpSession session) {
+                    ("updateBook") Book updateBook, BindingResult result, @PathVariable("book_id") Long book_id, HttpSession session) {
+        System.out.println(result);
         Long id = (Long) session.getAttribute("userId");
         Book oneBook = bookServ.findOneById(book_id);
         if (id != oneBook.getSubmittedBy().getId()) {
             session.setAttribute("userId", null);
             return "redirect:/";
         }
-        System.out.println(result);
         if (result.hasErrors()) {
             return "editBook.jsp";
         }
-        book.setId(id);
-        bookServ.update(book);
+        updateBook.setId(book_id);
+        bookServ.update(updateBook);
         return "redirect:/dashboard";
     }
 
 
     // DELETES BOOK
-    @GetMapping("/book/{book_id}/delete")
+    @GetMapping("/books/{book_id}/delete")
     public String deleteBook(@PathVariable("book_id") Long book_id, HttpSession session) {
         Long id = (Long) session.getAttribute("userId");
 
